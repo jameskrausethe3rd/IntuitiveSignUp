@@ -6,7 +6,26 @@ window.onload = function() {
     slider.oninput = function() {
     output.innerHTML = this.value;
     }
+
+    //Reference the DropDownList.
+    var ddlYears = document.getElementById("ddlYears");
+
+    //Determine the Current Year.
+    var currentYear = (new Date()).getFullYear();
+    console.log(currentYear)
+    //Loop and add the Year values to DropDownList.
+    for (var i = 1950; i <= currentYear; i++) {
+        for (var j = 1; j <= 12; j++){
+            for (var k = 1; k <= 31; k++) {
+                var option = document.createElement("OPTION");
+                option.innerHTML = i + "/" + j + "/" + k
+                option.value = i + "/" + j + "/" + k
+                ddlYears.appendChild(option);
+            }
+        }
+    }
  }
+
 
  function placeOrder() {
     const fnameLetters = []
