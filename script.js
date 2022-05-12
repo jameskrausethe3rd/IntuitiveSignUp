@@ -25,8 +25,6 @@ window.onload = function() {
         }
     }
  }
-
-
  function placeOrder() {
     const fnameLetters = []
 
