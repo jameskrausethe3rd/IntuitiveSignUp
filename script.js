@@ -12,18 +12,31 @@ window.onload = function() {
 
     //Determine the Current Year.
     var currentYear = (new Date()).getFullYear();
-    console.log(currentYear)
+    var years = []
     //Loop and add the Year values to DropDownList.
-    for (var i = 1950; i <= currentYear; i++) {
+    for (var i = 1900; i <= currentYear; i++) {
         for (var j = 1; j <= 12; j++){
             for (var k = 1; k <= 31; k++) {
-                var option = document.createElement("OPTION");
-                option.innerHTML = i + "/" + j + "/" + k
-                option.value = i + "/" + j + "/" + k
-                ddlYears.appendChild(option);
+                years.push(i + "/" + j + "/" + k)
             }
         }
     }
+    for (let i =0; i<10000; i++)
+    {
+        let cardidx1 = Math.floor((Math.random() * years.length));
+        let cardidx2 = Math.floor((Math.random() * years.length));
+        let t = years[cardidx1];
+
+        years[cardidx1] = years[cardidx2];
+        years[cardidx2] = t;
+    }
+    years.forEach((el) => {
+        var option = document.createElement("OPTION");
+        option.innerHTML = el
+        option.value = el
+        ddlYears.appendChild(option);  
+    })
+
  }
  function placeOrder() {
     const fnameLetters = []
@@ -65,3 +78,20 @@ window.onload = function() {
      }
      console.log(lastName)
  }
+ function findAddress (lat, long){
+    let snip = "https://maps.googleapis.com/maps/api/geocode/json?latlng="
+    //snip = snip + lat + "," + long
+    snip = snip + "44.154675100778356,-93.97372997318932"
+    loadDoc(snip)
+
+ }
+ function loadDoc(url) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+       }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
+  }

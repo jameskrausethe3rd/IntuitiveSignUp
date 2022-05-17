@@ -644,7 +644,20 @@
         <input type="range" min="1" max="99999999999" value="1" class="slider" id="myRange">
         <p>Phone Number: <span id="demo"></span></p>
     </div>
-    <select id="ddlYears"></select>
+    <div>
+        <label for="ddlYears">Enter Birthdate</label>
+        <select id="ddlYears"></select>
+    </div>
+    <div>
+        <label for="lat">Enter Address</label>
+        <input id="lat" type="text" value="Latitude">
+        <input id="long" type="text" value="Longitude">
+        <button type="submit"
+            class='input_submit'
+            style="margin-right: 15px;"
+            onClick="findAddress()">Search
+        </button>
+    </div>
     <div id="placeOrder">
         <button type="submit"
                 class='input_submit'
